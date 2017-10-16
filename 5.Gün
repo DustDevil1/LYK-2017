@@ -1,0 +1,43 @@
+##LYK 2017
+##GNU/LINUX SİSTEM YÖNETİMİ(1.DÜZEY)
+##CentOs 7
+
+# w : sistemde hangi kullanıcılar varsa gösteren komut
+# Alt + sol,sağ : kullanıcılar arasında geçiş yapma
+# df : diskler hakkında (boşluk doluluk) bilgi verir
+# df -i : disklerin inode durumları hakkında bilgi verir
+# proc/cpuinfo : cpu hakkında detaylı bilgi verir.
+# uname : kernelin adını gösterir
+# dhclient : internete bağlanma komutu
+# ICMP : Internet Control Message Protocol
+
+>>Paket Yönetimi
+RPM : Redhat Pocket Manager : kurulum ve silmelerden esasen sorumlu
+YUM : yellowdog update modifier : paket yöneticisi değildir. yardımcıdır.
+	RPM Debian'da : dpkg
+	YUM Debian'da : apt 
+ # redhatte paketlerin uzantıları .rpm, debianda .deb olur.
+ # curl : komut satırı üzerinden, URL sözdizimi kullanarak veri aktarımı yapmak için kullanılabilen bir yazılım kütüphanesidir.
+	- o : sonuç kaydedilir, örn/ curl -o dosyaismi http://url
+ # rpm : 
+	-e : paketi sil
+	-ql : tüm dosyaları kontrol et ve listele
+	-qi : kontrol ve bilgi
+ # yum : direkt dosyanın en güncel halini indirip kurmamızı sağlar
+	install : yükle
+	remove : sil
+	update : güncelle
+	infor : bilgi ver
+	provides : istediğimiz dosyanın hangi pakette olduğunu söyler
+
+# free -m : RAM hakkında bilgi verir.
+# epel : base, extract ve updates dışında ek bir repositorydir.
+	yum install epel-release : epel için sağlanmış kolaylık
+# normal şartlarda repo, .repo uzantılı dosyadaki açıklamalarla değiştirilir.
+
+>>CRON
+Zamanlanmış görevler demektir.Kullanımı /etc/crontab' ı konfigüre edilerek sağlanır, satır ekleyerek görev eklenir.
+
+...
+
+

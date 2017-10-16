@@ -1,0 +1,56 @@
+##LYK 2017
+##GNU/LINUX SİSTEM YÖNETİMİ(1.DÜZEY)
+##CentOs 7
+
+# izinlerde x yerine s harfi bulunabilir. Bu suid(switch user id) bitidir. Herhangi bir kullanıcı s bitinin bulunduğu dosyayı zaman, dosyanın sahibiymiş gibi çalıştırır.
+# sguid(sgid) biti : sahibin bulunduğu grubun yetkisiyle çalıştırır.
+# df -i : disklerin inode durumlarını gösterir.
+# .sh : shell script uzantısı
+# s biti nasıl verilir?
+	# _ _ _ : ilk kısım suid, ikinci kısım sgid, üçüncü kısım sticky bit içindir. chmod ataması için kullandığımız 3 basamağın soluna yetki numarası yazılır. suid:4 sgid:2 sticky:1(2'lik sayı sisteminden)
+# shell scriptlere suid biti etki etmez.
+# s biti yokken kimseni shadow üzerinde yetkisi yoktur.
+# t : sticky bit, herkesin kendi dosyası üzerinde hak sahibi olmasını sağlar.(temp dizini örnek)
+# less : dosyada aşağı yukarı gezinebilme yeteneği verip ekrana yazdıran komut
+# more : less ile aynı mantık ama sadece aşağı doğru ilerlenebilir.
+# usermod : kullanıcı hesabını modifiye etme komutu
+	- usermod -aG grupadı kullanıcıadı : gruba kullanıcı ekleme
+# sıkıştırma
+	- kayıplı : mp3, jpeg, mpeg, ogv
+	- kayıpsız : zip, Bzip2, rar, gzip
+# şifrelenen dosyalar sıkıştırılamaz
+# dd : bir diskin içerisindeki verileri istediğimiz gibi okuyabilir
+# -h : human parametresi, insan okuyabilsin diye yapılmış :) Kompleks sayıları okumamızı kolaylaştırır.
+# bir dosyayı tar' lamak için
+	tar cf : dosyaları uc uca birleştir, küçültmez. (create file)
+	tar czf : create zip file (boyut düşürür, sıkıştırır)
+	tar xzf : extract zip file (zip dosyalarını açar)
+# gzip : istediğimiz dosyayı zipler ve asıl dosyayı siler
+# gunzip : zipten çıkarma işlemi yapar
+# Link 
+	soft : sembolik link, windowstaki gibi kısayol oluşturur
+	soft link oluşturma : ln -s dosyayeri hedefyer (hedefyer deki dosyanın türü artık link)	
+	hard :  soft linkten farklı olarak direkt inode numarasına gider.
+# which = whereis
+# history : geçmiş komutları gösterir
+# bash : bash terminali açar
+# sh : shell terminali açar
+# dosya isimlerinin başına . koyarsan gizlenir
+# özel karakterlerin silinebilmesi için kendisinden önce \ konulur. (örneğin köşeli parantez)
+# arama komutlarında * devamındaki her şeyi arar. 
+>> 
+	# .bash_history : geçmiş komutların tutulmasını sağlar	
+	# .bash_logout : sistemden çıkarken yapılacak bir iş varsa buradan özelleştirilebilir
+	# .bash_profile : bashrc' yi çalıştırır
+	# .bashrc : terminal girişine  komut atama ve konfigürasyon yeri
+
+# alias : komutlar ve açıklamaları verir, komut ataması yapılabilir
+	kullanımı : alias atamakomutu=komut
+# unalias : atadığımız komutu iptal eder
+# tanımlanan komutların (alias) sistemin her açıldığında çalışması için .bashrc'ye atılabilir.
+# env : environment veriables : komutu yardımıyla sistemde öntanımı yapılan veya sonradan tanımlanan tüm değişkenler ekrana listelenir.
+# cd - : bulunduğu son dizine gider
+# çalıştırmak istediğimiz scriptlerin sonuna $PATH değişkeni atamalıyız. Kullandığımız komutların yerini, yolunu tanımlamış oluyoruz.
+# su - $kullanıcıadı : kullanıcılar rootun çevre değişkenlerini kullanır, eğer kendi değişkenlerimizi kullanmak istiyorsak bunu kullanırız.
+
+...

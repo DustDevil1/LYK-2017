@@ -1,0 +1,149 @@
+##LYK 2017
+##GNU/LINUX SİSTEM YÖNETİMİ(1.DÜZEY)
+##CentOs 7
+
+//LVM(Logical Volume Manager)
+Linux çekirdeği için bir Mantıksal Hacim Yöneticisi'dir. LVM kullanarak depolama alanı soyut hale getirilebilir, düzenlemesi daha kolay olan “sanal disk bölümleri” oluşturulabilir.
+
+//MBR(Master Boot Record)
+MBR harddiskinizin ilk sektörüdür. Bu sektörde bilgisayarınızın adreslemesi bulunur yani hangi bilginin nerede olduğu bir tablo halinde bu bölümdedir. Bu bölümde ufak bir program çalışır ve bu program sayesinde bilgisayarın açılışında yani önyükleme olarak hangi işletim sisteminin seçileceği belirlenir. 512 bayttır;
+	446 Baytı : Bootloader(önyükleyici)
+	4x16=64 Baytı : Partition Table (bölümleme tablosu)
+	2 Bayt : Magic Byte(başlangıç kodlarını anlamlandıran kısım)
+
+//GPT(GUID Partition Table)
+GUID Partition Table UEFI'nin bir parçası olup MBR'ye göre daha esnek bölümleme ve disk kapasitesi imkanları sunar. IBM PC'lerden geriye kalan modası geçmiş IBM BIOS'lar bildiğiniz gibi MBR'yi kullanılır. GPT disk bölümleme tablosu bütün bu kısıtlamalara tabi değildir.
+
+//GUID(Globally Unique ID)
+36 karakterden oluşan ve hiçbir şekilde daha önce oluşturulan GUID'lerle (dünya da kim nerede ne zaman oluşturursa oluştursun) eşleşmeyen string bir ID üretmektedir. Basit olarak incelersek, GUID, bilgisayarınızın MAC adresi, saat, tarih vb. birçok özelliği birleştirerek 36 karakterlik bir string ID üretir.
+
+//MAC ADRESİ(Media Access Control)
+İngilizce Media Access Control, yani Ortam Erişim Yönetimi) bir bilgisayar ağında, bir cihazın ağ donanımını tanımaya yarar. MAC Adresi(Fiziksel Adres,Donanım Adresi), ağ donanımının tanımlanmasını sağlar. MAC adresi, bilgisayarın ethernet kartına üretici tarafından kodlanan bir bilgidir.
+
+//BIOS(Basic Input-Output System)
+Basic Input Output System, giriş ve çıkış aygıtlarını kontrol ederk sistemin açılmasını sağlar. Anakart'ın birçok özelliğini kullanmamıza olanak sağlayan yazılım, sistem ve donanımlarımız arasında bağlantı kurar.EEPROM'da bulunur.
+
+//EEPROM(Electronically Erasable Programmable Read-Only Memory)
+Electronically Erasable Programmable Read-Only Memory, küçük boyuttaki verileri kalıcı olarak saklamak için bilgisayar ya da diğer cihazlarda kullanılan bir yongadır.
+
+//Bilgisayar Nasıl Açılır?
+BIOS --> HDD --> GRUB --> initrd --> Kernel
+
+//GRUB(Grand Unify Bootloader)(alternatifi LILO)
+Kernelin açılmadan konfigüre edilebildiği yerdir.Sistemin yüklenmesinden ve kontrolun kernel'a devredilmesinden sorumludur. 
+
+//INITRD(Initial ramdisk)
+initial ramdisk kısaltmasıdır. Aşağı yukarı anlamı başlangıç bellek diski oluyor. Boot aşamasında ilk önce çekirdek (kernel) yüklenir. Bundan sonra bilgisayarınızın belleğinde bir bellek diski oluşturulur. Oluşturulan bellek disk üzerinde /(root) yansısı açılır ve kök dizin olarak monte edilir. /initrd bu işlemlerin yapılması ve Linux'un yüklenmesi için gereklidir.
+
+>>Windows'un kerneli : NT, MacOs'in kerneli : XNU(Darwin)'dur.
+
+//KERNEL
+İşletim sistemi çekirdeği, kısaca çekirdek (kernel), işletim sisteminin kalbidir. Uygulamalar ve donanım seviyesindeki bilgi işlemleri arasında bir köprü görevi görür. Çekirdeğin görevleri sistemin kaynaklarını yönetmeyi de kapsamaktadır.Tek program çalıştırır, adı init. Kalan tüm programları init çalıştırır.
+
+>> OOM Killer(Out of Memory Killer) 
+Sistem zorlandığında genelde en çok RAM yiyen programı kapatır.
+
+>>Dosya Sistemleri
+	fat,fat32,ntfs,ext,ext(2,3,4),xfs türleridir. Çeşitli özellikleri ve +,- leri bulunur.
+# ~ : tilda
+# pwd : print working directory
+
+>> Root kullanıcı iken terminalde #, normal kullanıcı iken terminalde $ gözükür.
+>> Root'un windowstaki karşılığı system.
+
+# poweroff : kapatma komutu
+
+>> Linux'ta her şey dosyadır.
+
+# cd : change directory
+# echo : ekrana yazdır
+
+>> ' ' : tek tırnak, içinde değişken de olsa string olarak basmayı sağlar.
+
+# # : diez işareti, yorumlama satırı açar.
+
+>> Ctrl + W : sola doğru bir kelime siler.
+
+//Linux Dizin Hiyerarşisi
+
+		/  :Kök dizini. Klasör yapısının başladığı nokta. Linux sisteminin alt klasörler halinde bulunduğu ana klasör.
+		/bin :Temel programların ve gerekli kullanıcı komutlarının saklandığı dizindir.
+		/boot : Linux başlarken ihtiyacı olduğu dosyaların bulunduğu dizin. 
+		/dev  :Sisteminizdeki donanımların listesinin saklandığı dizindir. Diğer donanımların yanı sıra taşınabilir cihazlarınız da bu listede dosya olarak saklanır.
+		/etc :Genel ayar dosyalarının genellikle metin dosyaları halinde saklandığı dizin.
+		/home :Ev dizini. Her bir normal kullanıcı hesabının kendine ait ve yazma izninin olduğu bir alt klasörünün olduğu dizin.
+		/lib,lib64 :Paylaşılan kütüphane dosyalarının bulunduğu dizindir.
+		/lost+found :Sistem çökmesi veya çalışır durumdaki sürücü/bölüm bağlantısı kopması gibi durumlarda kurtarılabilen dosyaların saklandığı dizindir.
+		/media :Taşınabilir depolama aygıtlarının bağlandığı dizindir. CD/DVD sürücü, disket sürücü, USB bellek, USB sabit disk vs.
+		/mnt :Sistem yöneticisi tarafından dosya sistemlerinin geçici olarak bağlandığı dizindir.
+		/opt :Bazı uygulamaların saklandığı dizin.
+		/proc :Aslında sanal bir dizindir. Kernel ve işlemlere ait dosyalar saklanır. Her işleme ait bir dizin vardır.
+		/root :Superuser veya root denilen yönetici hesabının ev dizinidir.
+		/sbin :bin dizininin aksine sistem veya sistem yöneticisi tarafından kullanılan komutların saklandığı dizindir.
+		/srv :http-ftp gibi hizmetlere ait dizin.
+		/sys :Kernel ve donanımlar hakkında bazı dosyaların yer aldığı dizin.
+		/tmp :Uygulamaların geçici dosyalarının tutulduğu dizin. 
+		/usr :Kullanıcı programları, bazı uygulamalar, uygulama parçaları-ayarları gibi dosyaların bulunduğu oldukça büyük bir dizindir.
+		/var :Sistemde yapılan değişikliklere ait dosya ve günlüklerin saklandığı dizindir.
+
+# reboot : yeniden başlatma komutu.
+
+>> MBR Silme(diski sıfırlarla doldurur)
+dd if=/dev/zero of=/dev/sda bs=512 count=1
+
+# clear : konsolu temizle
+# ls : listele
+# ls -l komutu çıktılarında
+	....... Sayı1,Sayı2 .......
+	Sayı1:major number, cihazın türüne verilen numara
+	Sayı2:minor number, cihazın türünü spesifik belirlemek için verilen major altı numaralar
+
+>>Cihaz Türleri
+
+	c: character(örnek terminal)
+	d: directory
+	b: block(cd rom örnek)
+	l: link, bağlantı dosyası
+	-: regular file, standart dosya
+	s: socket, unix soketleri
+
+>>/dev 
+	zero: sıfırlar üretir
+	random: rastgele sayı üretir
+	null: karadelik, yutar
+	urandom: daha hızlı random üretir
+
+>>fd : file descripter, dosyalara isim verir
+	0: stdin, klavyeden alınan girdi
+	1: stdout, normal ekran çıktıları
+	2: stderr, hata çıktıları
+
+# çıktı yönlendirme > ile yapılır
+# 2>/dev/null : hataları göstermez
+  &>/dev/null : çıktı göstermez
+
+# cat : yazdırma komutu
+# >> : girdiyi hedef dosyanın sonuna ekler
+# tac : tersten yazdırır
+# wc : word count
+	-l : line
+	-c : character
+	-w : word
+# touch : dokun, içi boş dosya oluşturur.
+# head : ilk 10 satırı al
+	-n : number, sayı atamak için kullanılan parametre
+# tail : son 10 satırı al
+	-n : number, sayı atamak için kullanılan parametre
+
+>> Bir komutun çıktısını başka bir komutun kullanması nasıl sağlanır?
+	yöntem : piping 
+	| : pipe
+
+# RAM : random access memory , SAM : sequential access memory
+# whereis : istediğimiz komut veya programın nerede olduğunu bulur
+# değişkenlerin başına $ işareti konur.
+# vi' dan nasıl çıkılır? : :wq, kaydedip çıkar. :q!, kaydetmeden çıkar.
+
+...
+
+

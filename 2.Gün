@@ -1,0 +1,56 @@
+##LYK 2017
+##GNU/LINUX SİSTEM YÖNETİMİ(1.DÜZEY)
+##CentOs 7
+
+# rm : dosya silme komutu
+	-r : reqursive, özyinelemeli	
+	-f : force, sormadan sil
+# mkdir : dizin oluşturma komutu
+# rmdir : içi boş dosya silme
+# cp : copy paste, kopyalama komutu
+# touch eğer istediğimiz dosyayı oluşturmuşsa, günceller
+# ls -l = ll (her dağıtımda olmayabilir)
+# isim değiştirme ile dosyayın yerini değiştirme aynı şey
+# mv : move, isim değiştirme, yer değiştirme
+# cd .. : bir üst dizine çıkar
+# ls .. : bir üst dizini listeler
+	ls ../.. : iki üst dizini listeler
+# useraad : kullanıcı ekleme
+# passwd : şifre değiştirme
+# userdel : kullanıcı silme
+# groupadd : grup ekleme
+
+>> Dosya İzinleri 
+	r : read(4)
+	w : write(2)
+	x : execute(1)
+		- --- --- --- : ilk üçlü kullanıcı, ikinci üçlü grup, üçüncü üçlü diğer kullanıcı izinlerini belirtir.
+
+# chown : dosya sahipliği değiştirme
+	- R : alt dosyaların da recursive olarak sahipliğini değiştirir
+
+# /etc/passwd 
+	user:x:number1:number2:......
+	user: kullanıcı adı
+	x : şifre
+	number1 : userid
+	number2 : group id
+	..... : kullanıcının kullanacağı terminalin bulunduğu dizin
+# root kullanıcısının user id'si 0 dır. Diğer kullanıcıların user id'si 0 olursa root yetkisine sahip olurlar.
+# stat : istenilen dosyanın metadatasını verir
+# man : yardım komutu, istenilen komutun ayrıntılı kullanım klavuzunu verir.
+
+//DİZİNLER VE INODE
+	https://www.youtube.com/watch?v=oHrlU3b1ZAw
+	# bir dosyanın adı dizininde yazar, dosya adını bilmez.
+	# dizin; inode'unu, kendi yerini ve bir üst dizinini bilir.
+	# dosya izinleri, sahibi, tarih vs her bilgi inode'da bulunur.
+	# inodelar biterse, diskte yer olsa bile doluymuş gibi gösterir.
+
+# absolute path : mutlak yol(açık açık tüm yolu belirtir)
+# relative path : bağıl yol
+# su : switch user , kullanıcı değiştirme
+# whoami : ben hangi kullanıcıyım
+
+...
+

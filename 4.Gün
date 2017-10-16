@@ -1,0 +1,45 @@
+##LYK 2017
+##GNU/LINUX SİSTEM YÖNETİMİ(1.DÜZEY)
+##CentOs 7
+
+# fsck : dosya sistemlerini kontrol etmek ve kurtarmak için kullanılan bir programdır(komut)
+# file : dosya türünü belirtir
+# tar, dosya üzerindeki sahiplik ve yetki bilgilerini de tutar. Zip tutmaz
+
+>>PROCESS(SÜREÇ)
+	- foreground process : ön planda çalıştırılan programlardır.
+	- background process : bizdek istek beklemeden arkaplanda çalışır.
+ # daemons : sistem açıldığı andan itibaren kapanana kadar devam eden süreçlere verilen isim
+ # her sürecin kendine ait bir id numarası vardır
+	- PID : process id
+	- PPID : parent process id 
+ # init process : ilk çalışan süreç ve diğer bütün süreçlerin ana sürecidir, kernel tarafından oluşturur. init'in pid' i 1'dir.
+ # pidof : istediğimiz programın pid' ini verir.
+ # initin karşılığı systemd ' dir
+ # echo $$ : terminalin pid'i
+ # echo $PID : terminalin ppid' i
+ # ps : çalışan processleri gösterir
+ # top : detaylı process gösterir
+ # up-time : sistemin çalışma süresi
+ # ps auxf : detayli process gösterimi
+              a : all , tüm kullanıcıların
+	      u : user , kullanıcı isimleriyle
+	      x : terminalde çalışma zorunluluğu olmadan
+	      f : alt işlem olduğunu belirterek  
+ # VSZ : virtual memory size
+ # RSS : resident set size 
+ # processler için -    s : stopped 
+			r : running
+			S< : öncelikli
+			SN : düşük öncelikli 
+ # thread : sistem aynı anda iki process yapmaz , processler arasında gözle görülmeyen hızda geçiş yapıyor.
+ # kill -l NUMBER : sinyal göndererek process öldürme işlemi(64 sinyal vardır)
+ # bütün unixlerde 1. sinyal sabittir.
+ # 9-SIGKILL(sorgusuz sualsiz öldürür) , 19-SIGSTOP , 18-SIGCONT(durmuş programı devam ettirmek için kullanılır) , 15-SIGTERM(programa usulunce kapan der)
+ # bilgisayar kapanırken tüm processlere gönderilen sinyal 15' dir.
+ # & : programı backgroundda çalıştırır
+ # jobs : arkaplanda çalışan programları listeler
+ # fg : arkaplanda çalışan programı önplana getirir.
+		fg %number : arka planda çalışma numarası yazılır
+ 
+...

@@ -1,0 +1,73 @@
+##LYK 2017
+##GNU/LINUX SİSTEM YÖNETİMİ(1.DÜZEY)
+##CentOs 7
+
+# cronlar /var/pool/cron altında bulunur
+# bir kere çalıştırılabilen zamanlayıcı : at
+# ls -ld :dizin : dizinin izinlerini gösterir
+# dosyanın ilk 2 baytına magic byte denir ve dosyanın türüne ait bilgiler burada bulunur.
+# apropos : komut arama komutu
+# apropos = man -k
+# grep : dosya içinde kelime arama
+	-w : sadece kelime olarak ara
+	-c : sayması için gereken parametre
+	-v : geçmesini istemediğimiz kelime 
+	- ^$ : boş satır arama
+		^ : satır başı
+		$ : satır sonu 
+	-^kelime : satır başında arar
+	-kelime$ : satır sonunda arar
+	-  -E "kelime1:kelime2" : ya da anlamına gelir
+		-E : pipe' ın ya da olarak algılanmasını sağlar
+			- egrep de aynı işlevi görür
+	-i : büyük küçük harfe bakmaz
+	-l : adının geçtiği dosyaları listeler
+  # grep komutunda aranan kelime için * konursa kendinden önceki harf, hiç olmayabilir veya istediği kadar olabilir anlamına gelir. . koyarsak herhangi bir karakter olabilir demektir. + olursa en az bir tane veya daha fazla olmalı anlamına gelir.
+# xargs : kendisine gelen bütün çıktıyı sağındaki kotuma girdi olarak gösterir
+	örn : ls -la isimler.txt : xargs grep "halit"
+# find : arama komutu
+	-delete : sil
+	-empty : boş dosyaları bulur
+	-mtime +sayı : tarihinden sonra oluşturulmuş dosyaları bulur
+	-size : boyut parametresi
+	-newer dosya : bu dosyadan daha yeni dosyaları sıralar
+	- perm : izin ayarı isteyerek listeler
+	- type : dosya türü seçme
+	- iname : insensitive name (büyük küçük harf duyarlılığını ortadan kaldırır)
+	- executable : çalıştırılabilir
+	- writeable : yazılabilir
+# shutdown -h(halt) now(+dakika parametresi de olur) = poweroff
+# script : yazdığımız komutları kaydetme komutu
+# umask : hangi izinlerin verilmeyeceğini ayarlar. normali 0022
+# du : dosya boyutu göstermeye yarar.
+# herhangi bir arama komutunun tersini almak için "\!" yazılır.
+# tar Af /...... dosya : tar uzantılı dosyaya dosya ekleme
+# değişkene komut atamak için komutu parantez içine al
+# time : bir komutun ne kadar zaman aldığını görmek için kullanılır
+# ; : komutlar arası ayrım yapmak için kullanılır
+# zcat : zipleri catlemek için kullanılır
+# mount KAYNAK HEDEF : cihaz mount etmek için kullanılır
+# yum list : depodaki paketleri listeler
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
